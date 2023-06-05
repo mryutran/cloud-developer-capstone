@@ -40,6 +40,7 @@ jobs:
       
       - name: Installing NPM
         run: |
+          cd client
           npm install
           npm audit fix | true
 
