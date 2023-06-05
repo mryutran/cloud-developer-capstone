@@ -45,7 +45,9 @@ jobs:
           npm audit fix | true
 
       - name: Building application
-        run: npm run build
+        run: |
+          cd client
+          npm run build
 
       - name: Generate deployment package
         run: |
@@ -61,5 +63,5 @@ jobs:
           environment_name: TodoClient-Environment
           version_label: 1.0.0
           region: us-east-1
-          deployment_package: deploy.zip
+          deployment_package: client/deploy.zip
           # use_existing_version_if_available: true
