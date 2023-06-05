@@ -15,7 +15,7 @@ jobs:
         with:
           node-version: '18.x'
 
-      - name: Install depedencies
+      - name: Test BE
         run: |
           cd backend
           npm install
@@ -29,10 +29,10 @@ jobs:
         with:
           node-version: '18.x'
 
-      - name: Build FE
+      - name: Test FE
         run: |
           cd client
           npm install
           npm audit fix | true
+          export NODE_OPTIONS=--openssl-legacy-provider
           npm run build
-          
