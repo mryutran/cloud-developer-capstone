@@ -25,5 +25,7 @@ jobs:
           npm install
           npm audit fix | true
           export NODE_OPTIONS=--openssl-legacy-provider
+          export ${{ secrets.AWS_ACCESS_KEY_ID }}
+          export ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           npm install -g serverless
           sls deploy --verbose

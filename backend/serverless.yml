@@ -127,12 +127,15 @@ functions:
           path: todos/{todoId}
           cors: true
           authorizer: Auth
-          reqValidatorName: RequestBodyValidator
-          documentation:
-            summary: update a todo
-            description: update a todo
-            requestModels:
-              'application/json': UpdateTodo
+          # reqValidatorName: RequestBodyValidator
+          # documentation:
+          #   summary: update a todo
+          #   description: update a todo
+          #   requestModels:
+          #     'application/json': UpdateTodo
+          request:
+            schemas:
+              application/json: ${file(models/update-todo-model.json)}
     iamRoleStatementsInherit: true
     iamRoleStatements:
       - Effect: Allow
