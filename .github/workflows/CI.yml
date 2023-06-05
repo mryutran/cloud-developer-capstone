@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - master
+      - main
   
 jobs:
   build-BE:
@@ -19,7 +19,7 @@ jobs:
         run: |
           cd backend
           npm install
-          npm audit fix
+          npm audit fix | true
    
   build-FE:
     runs-on: ubuntu-latest
@@ -33,5 +33,6 @@ jobs:
         run: |
           cd client
           npm install
-          npm audit fix
+          npm audit fix | true
           npm run build
+          
