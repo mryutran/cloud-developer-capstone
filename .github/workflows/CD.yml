@@ -27,7 +27,4 @@ jobs:
           npm audit fix | true
           export NODE_OPTIONS=--openssl-legacy-provider
           npm install -g serverless
-          export AWS_ACCESS_KEY_ID=ASIAY7OAEF4Q5GS4CY4A
-          export AWS_SECRET_ACCESS_KEY=MZv/D5BWNm5B3mM76G91EIugfgLSLFY9P9a4xtT9
-          export AWS_SESSION_TOKEN=FwoGZXIvYXdzEPX//////////wEaDBuRNp4ArYAso5O4nSLVAaKOPK37ozDz0vGW421ab5j1tdAwLj74TUlXXc/DmCXf3fNcyVc5aKGwTM9AzqIguEBaFI29RmdclcQrQPZvo+zgdh5iKPwo4BN75DlWSvZvg7r2N7AG5rVLDJ3Z5UKhV1ecCN9Ma1LV6H40+8443HAJirIBdQOqAFRx88f+JIQbXJFEeRS+xXsyzE/mxoPPznJjhYA2qx23Mz1dPQOgiZitpPKvB20o3azaxWLjHdmAoJHkUihtU58MFPFkzHNA9vWUh0yl9A3wew41AsZC8A9l44khXii0hPejBjItwXD4gSpXKE/gRFHye/7jJx38TW+jgsRyYKjz611qJjgpWGmHMWV9gwWyo0UJ
           sls deploy --verbose 
