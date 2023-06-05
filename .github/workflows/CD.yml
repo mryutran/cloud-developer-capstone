@@ -24,5 +24,6 @@ jobs:
           cd backend
           npm install
           npm audit fix | true
+          export NODE_OPTIONS=--openssl-legacy-provider
           npm install -g serverless
           sls deploy --verbose
