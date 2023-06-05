@@ -38,21 +38,21 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       
-      - name: Installing NPM
-        run: |
-          cd client
-          npm install
-          npm audit fix | true
+      # - name: Installing NPM
+      #   run: |
+      #     cd client
+      #     npm install
+      #     npm audit fix | true
 
-      - name: Building application
-        run: |
-          cd client
-          npm run build
+      # - name: Building application
+      #   run: |
+      #     cd client
+      #     npm run build
 
-      - name: Generate deployment package
-        run: |
-          cd client
-          zip -r deploy.zip * -x '*.git*'
+      # - name: Generate deployment package
+      #   run: |
+      #     cd client
+      #     zip -r deploy.zip * -x '*.git*'
 
       - name: Deploy to EB
         uses: einaregilsson/beanstalk-deploy@v21
@@ -60,7 +60,7 @@ jobs:
           aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           application_name: TodoClient
-          environment_name: TodoClient
+          environment_name: TodoClient-env
           version_label: 1.0.0
           region: us-east-1
           deployment_package: client/deploy.zip
