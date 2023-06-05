@@ -2,9 +2,9 @@ name: Deployment
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - main
+  # push:
+  #   branches:
+  #     - main
 
 jobs:
   backend:
@@ -28,3 +28,30 @@ jobs:
           export NODE_OPTIONS=--openssl-legacy-provider
           npm install -g serverless
           sls deploy --verbose 
+
+  frontend:
+    runs-on: ubuntu-latest
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      AWS_SESSION_TOKEN: ${{ secrets.AWS_SESSION_TOKEN }}
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Generate deployment package
+        run: |
+        cd client
+        zip -r deploy.zip . -x '*.git*'
+
+      - name: Deploy to EB
+        uses: einaregilsson/beanstalk-deploy@v21
+        with:
+          aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          application_name: TodoClient
+          environment_name: TodoClient-Environment
+          version_label: 1.0.0
+          region: us-east-1
+          deployment_package: deploy.zip
+          use_existing_version_if_available: true
+          
