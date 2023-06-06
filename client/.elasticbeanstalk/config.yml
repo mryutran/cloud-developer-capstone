@@ -1,16 +1,16 @@
 branch-defaults:
   default:
-    environment: null
+    environment: TodoClient-dev
 global:
   application_name: TodoClient
   branch: null
   default_ec2_keyname: vockey
-  default_platform: Node.js 18 running on 64bit Amazon Linux 2
+  default_platform: Docker running on 64bit Amazon Linux 2
   default_region: us-east-1
   include_git_submodules: true
   instance_profile: null
   platform_name: null
-  platform_version: 5.8.2
+  platform_version: null
   profile: null
   repository: null
   sc: null

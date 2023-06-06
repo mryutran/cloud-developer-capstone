@@ -37,7 +37,11 @@ jobs:
       AWS_SESSION_TOKEN: ${{ secrets.AWS_SESSION_TOKEN }}
     steps:
       - uses: actions/checkout@v3
-      
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
+
       - name: Installing NPM
         run: |
           cd client
@@ -49,21 +53,26 @@ jobs:
           cd client
           npm run build
 
-      - name: Generate deployment package
+      # - name: Generate deployment package
+      #   run: |
+      #     cd client
+      #     zip -r deploy.zip * -x '*.git*'
+
+      - name: Install AWS CLI
         run: |
-          cd client
-          zip -r deploy.zip * -x '*.git*'
+        curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+        unzip awscliv2.zip
+        sudo ./aws/install
 
-      # - name: Install AWS CLI
-      #   run: |
-      #   curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-      #   unzip awscliv2.zip
-      #   sudo ./aws/install
+      - name: Install EB CLI
+        run: |
+        git clone https://github.com/aws/aws-elastic-beanstalk-cli-setup.git
+        ./aws-elastic-beanstalk-cli-setup/scripts/bundled_installer
 
-      # - name: Install EB CLI
-      #   run: |
-      #   git clone https://github.com/aws/aws-elastic-beanstalk-cli-setup.git
-      #   ./aws-elastic-beanstalk-cli-setup/scripts/bundled_installer
+      # - name: EB Deployment
+      #     run: |
+      #       cd client
+      #       eb deploy
 
       # - name: Deploy to EB
       #   uses: einaregilsson/beanstalk-deploy@v21
@@ -81,6 +90,3 @@ jobs:
       #   run: |
       #   eb create TodoClient-dev --cname TodoClient-dev --elb-type application
 
-      - name: Run eb deploy
-        run: |
-        eb deploy
