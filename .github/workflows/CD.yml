@@ -79,7 +79,7 @@ jobs:
           pip install awsebcli
 
       - name: EB Deployment
-          run: |
+        run: |
             cd client
             eb deploy
 
