@@ -10,7 +10,7 @@ global:
   include_git_submodules: true
   instance_profile: null
   platform_name: null
-  platform_version: null
+  platform_version: 5.8.2
   profile: null
   repository: null
   sc: null

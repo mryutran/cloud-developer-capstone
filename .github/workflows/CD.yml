@@ -54,6 +54,17 @@ jobs:
           cd client
           zip -r deploy.zip * -x '*.git*'
 
+      # - name: Install AWS CLI
+      #   run: |
+      #   curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+      #   unzip awscliv2.zip
+      #   sudo ./aws/install
+
+      # - name: Install EB CLI
+      #   run: |
+      #   git clone https://github.com/aws/aws-elastic-beanstalk-cli-setup.git
+      #   ./aws-elastic-beanstalk-cli-setup/scripts/bundled_installer
+
       - name: Deploy to EB
         uses: einaregilsson/beanstalk-deploy@v21
         with:
@@ -65,3 +76,11 @@ jobs:
           region: us-east-1
           deployment_package: client/deploy.zip
           use_existing_version_if_available: true
+
+      # - name: Run eb create
+      #   run: |
+      #   eb create TodoClient-dev --cname TodoClient-dev --elb-type application
+
+      # - name: Run eb deploy
+      #   run: |
+      #   eb deploy
