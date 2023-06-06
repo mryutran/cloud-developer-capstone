@@ -7,5 +7,5 @@ export const authConfig = {
   // domain: 'dev-nd9990-p4.us.auth0.com',
   domain: 'mryutran.us.auth0.com',            // Auth0 domain
   clientId: 'mVjd8gxO8wASGTYOAFwUusERaUDUQGMk',          // Auth0 client id
-  callbackUrl: 'http://localhost:3000/callback'
+  callbackUrl: 'http://todoclient-dev.us-east-1.elasticbeanstalk.com/callback'  // 3000
 }

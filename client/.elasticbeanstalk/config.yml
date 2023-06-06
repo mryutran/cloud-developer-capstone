@@ -1,6 +1,6 @@
 branch-defaults:
   default:
-    environment: TodoClient-dev
+    environment: null
 global:
   application_name: TodoClient
   branch: null
