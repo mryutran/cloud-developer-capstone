@@ -64,11 +64,20 @@ jobs:
       #     unzip awscliv2.zip
       #     sudo ./aws/install
 
+      # - name: Install EB CLI
+      #   run: |
+      #     git clone https://github.com/aws/aws-elastic-beanstalk-cli-setup.git
+      #     ./aws-elastic-beanstalk-cli-setup/scripts/bundled_installer
+
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
       - name: Install EB CLI
         run: |
-          git clone https://github.com/aws/aws-elastic-beanstalk-cli-setup.git
-          ./aws-elastic-beanstalk-cli-setup/scripts/bundled_installer
-
+          python -m pip install --upgrade pip
+          pip install awsebcli
+          
       # - name: EB Deployment
       #     run: |
       #       cd client
